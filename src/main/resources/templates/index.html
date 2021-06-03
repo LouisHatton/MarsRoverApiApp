@@ -1,10 +1,30 @@
 <html xmlns:th="http://thymeLeaf.org">
 	<head>
 		<title>Mars API Application</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"/>
 	</head>
 	<body>
-		<h2>Welcome to the Mars Rover API Web Application</h2>
-		
-		<img th:each="photo : ${roverData.photos}" th:src="${photo.imgSrc}"/>
+		<div class="container">
+			<h2>Welcome to the Mars Rover API Web Application</h2>
+			
+			<div th:each="index : ${#numbers.sequence(0,roverData.photos.size(),4)}" class="row" style="margin-bottom: 2em">
+		        
+		        <div class="col-sm" th:if="${index < roverData.photos.size()}">
+		          <img th:src="${roverData.photos[index].imgSrc}" class="img-fluid"/>
+		        </div>
+		        <div class="col-sm" th:if="${index+1 < roverData.photos.size()}">
+		          <img th:src="${roverData.photos[index+1].imgSrc}" class="img-fluid"/>
+		        </div>
+		        <div class="col-sm" th:if="${index+2 < roverData.photos.size()}">
+		          <img th:src="${roverData.photos[index+2].imgSrc}" class="img-fluid"/>
+		        </div>
+		        <div class="col-sm" th:if="${index+3 < roverData.photos.size()}">
+		          <img th:src="${roverData.photos[index+3].imgSrc}" class="img-fluid"/>
+		        </div>
+		        
+		  	</div>
+			
+			<!-- <img th:each="photo : ${roverData.photos}" th:src="${photo.imgSrc}"/> -->
+		</div>
 	</body>
 </html>
