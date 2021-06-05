@@ -7,6 +7,15 @@
 		<div class="container">
 			<h2>Welcome to the Mars Rover API Web Application</h2>
 			
+			<form method="GET" action="" id="frmRoverName">
+				<input type="hidden" id="roverData" name ="roverData" value="" />
+				<div class="btn-group" role="group" style="margin: 2em 0em;">
+				  <button type="button" class="btn btn-secondary" id="roverCuriosity">Curiosity</button>
+				  <button type="button" class="btn btn-secondary" id="roverOpportunity">Opportunity</button>
+				  <button type="button" class="btn btn-secondary" id="roverSpirit">Spirit</button>
+				</div>
+			</form>
+			
 			<div th:each="index : ${#numbers.sequence(0,roverData.photos.size(),4)}" class="row" style="margin-bottom: 2em">
 		        
 		        <div class="col-sm" th:if="${index < roverData.photos.size()}">
@@ -27,4 +36,5 @@
 			<!-- <img th:each="photo : ${roverData.photos}" th:src="${photo.imgSrc}"/> -->
 		</div>
 	</body>
+	<script type="text/javascript" src="/js/index.js"></script>
 </html>
