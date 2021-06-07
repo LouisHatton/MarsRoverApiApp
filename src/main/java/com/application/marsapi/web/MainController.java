@@ -17,11 +17,19 @@ public class MainController {
 	private MarsRoverApiService roverService;
 	
 	@GetMapping("/")
-	public String getRoot (ModelMap model, @RequestParam(required=false) String roverData) {
+	public String getRoot (ModelMap model, @RequestParam(required=false) String roverData,
+			@RequestParam(required=false) Integer marsSol) {
+		
+		
 		if (ObjectUtils.isEmpty(roverData)) {
 			roverData = "curiosity";
+		} else {
+			roverData = roverData.toLowerCase();
 		}
-		MarsRoverApiResponse apiResponse = roverService.getRoverData(roverData);
+		if (marsSol == null) {
+			marsSol = 1;
+		}
+		MarsRoverApiResponse apiResponse = roverService.getRoverData(roverData, marsSol);
 		model.put("roverData", apiResponse);
 		return "index";
 	}

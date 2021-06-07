@@ -8,12 +8,20 @@
 			<h2>Welcome to the Mars Rover API Web Application</h2>
 			
 			<form method="GET" action="" id="frmRoverName">
-				<input type="hidden" id="roverData" name ="roverData" value="" />
+				<input type="hidden" id="roverData" name ="roverData" value="curiosity" />
 				<div class="btn-group" role="group" style="margin: 2em 0em;">
 				  <button type="button" class="btn btn-secondary" id="roverCuriosity">Curiosity</button>
 				  <button type="button" class="btn btn-secondary" id="roverOpportunity">Opportunity</button>
 				  <button type="button" class="btn btn-secondary" id="roverSpirit">Spirit</button>
 				</div>
+				
+				<div class="form-group">
+					<label for="marsSol" class="col-form-label col-form-label-lg">Mars Sol:</label>
+					<input type="number" class="form-control form-control-lg" id="marsSol" name="marsSol" min="1" value="1"/>
+				</div>
+				
+				<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+				
 			</form>
 			
 			<div th:each="index : ${#numbers.sequence(0,roverData.photos.size(),4)}" class="row" style="margin-bottom: 2em">
